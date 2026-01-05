@@ -1,5 +1,6 @@
 # -- IMPORTS --
 import os
+import matplotlib
 from monai.apps import download_and_extract
 
 # -- CODE --

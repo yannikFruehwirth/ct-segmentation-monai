@@ -1,4 +1,7 @@
 # -- IMPORTS --
+import os
+import matplotlib
+from monai.apps import download_and_extract
 import matplotlib.pyplot as plt
 import numpy as np
 import torch
@@ -20,7 +23,7 @@ def plot_loss_metrics(train_losses, val_metrics, save_path="loss_metrics.png"):
     plt.xlabel('Epoch', fontsize=12)
     plt.ylabel('Dice Score', fontsize=12)
     plt.grid(True, linestyle='--', alpha=0.6)
-    plt.ylim(0, 0.1) 
+    plt.ylim(0, 1) 
     
     plt.tight_layout()
     plt.savefig(save_path, dpi=300)

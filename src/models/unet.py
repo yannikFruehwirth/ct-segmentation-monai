@@ -1,4 +1,7 @@
 # -- IMPORTS --
+import os
+import matplotlib
+from monai.apps import download_and_extract
 from monai.networks.nets import UNet
 
 # -- CODE --
