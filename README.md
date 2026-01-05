@@ -20,13 +20,14 @@ While traditional reconstruction focuses on image quality, this project focuses 
 | :-- | :-- | :--- | :--- |
 | **[Baseline](notebooks/02a_seg_baseline.ipynb)** | **Left** Original CT slice <br>**Mid:** Naive Thresholding <br>**Right** Ground truth  | *![sample](docs/assets/baseline_model.png)* | too naive -> PCA |
 | **[PCA](notebooks/02b_seg_pca.ipynb)** | **PCA** PC1-PC3 <br> | *![sample](docs/assets/pca_model.png)* | high explainability in PC1-PC3 BUT significant overlap -> advanced methods|
-| **[3D U-Net](notebooks/02a_seg_baseline.ipynb)** | **Left** Original CT slice <br>**Mid:** Naive Thresholding <br>**Right** Ground truth  | *![sample](docs/assets/baseline_model.png)* | too naive -> PCA |
+| **[U-Net](notebooks/02c_seg_unet.ipynb)** | **First** Training history <br>**Other:** Prediction examples  | *![history](docs/assets/training_history.png)* *![pred_1](docs/assets/pred_1.png)* *![pred_2](docs/assets/pred_2.png)* *![pred_3](docs/assets/pred_3.png)* | ~200 training samples,A100 GPU <br><br> Top validation dice loss: ~0.66 <br><br> default UNet (no hyperparams tuning), patch based augmentration <br> <br> significant segmentation, model understands spatial complexity |
 
 ## Repository Structure
 * `src/`: Code for data pipelines, model architectures, and training.
 * `notebooks/`: Data Analysis and qualitative model evaluation.
-* `tests/`: Tests for tensor shapes and data consistency.
 * `data/`: Storage for data.
+* `models/`: Best Unet model.
+* `results/`: Samples of unet prediction.
 
 ## Installation & Usage
 
@@ -43,7 +44,20 @@ cd ct-segmentation-monai
 uv sync
 ```
 
-## Data Preparation
+## Data Download
 ```bash
 uv run src/data/download_data.py
 ```
+
+## Run analysis
+### Data Exploration
+Run [data exploration](notebooks/01_data_exploration.ipynb).
+
+### Baseline model/ naive thresholding
+Run [baseline model](notebooks/02a_seg_baseline.ipynb).
+
+### PCA
+Run [PCA](notebooks/02b_seg_pca.ipynb).
+
+### U-Net
+Run [U-Net](notebooks/02c_seg_unet.ipynb) (preferably GPU).
